@@ -19,7 +19,24 @@
   </header>
   <main>
     <div data-view="entry-form">
-
+      <h1>New Entry</h1>
+      <div class="image-box">
+      <img src="images\placeholder-image-square.jpg" alt="Default Blank Image">
+      </div>
+      <form action="">
+        <div class="image-box-submit"><label for = "image-URL">Image URL</label>
+        <input type="url" name="url" id="image-URL">
+        </div>
+        <div class="title-field"><label for = "Title">Title</label>
+        <input type="text" name="text" id="Title">
+        </div>
+        <div class="notes-field"><label for = "Notes">Notes</label>
+        <textarea name="Notes" id="Notes" cols="40" rows="15"></textarea>
+        </div>
+        <div><label for="Save"></label>
+        <input type="submit" name="Save" value="Save" id="Save">
+        </div>
+      </form>
     </div>
   </main>
   <script src="js/data.js"></script>
