@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Code Journal</title>
   <link rel="icon" href="images/favicon.ico">
-  <link
-    rel="stylesheet"
-    crossorigin="anonymous"
+  <link rel="stylesheet" crossorigin="anonymous"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <header>
+    <h1>Code Journal</h1>
   </header>
   <main>
-    <div data-view="entry-form">
-      <h1>New Entry</h1>
-      <div class="image-box">
-      <img src="images\placeholder-image-square.jpg" alt="Default Blank Image">
-      </div>
+    <div class="container" data-view="entry-form">
       <form action="">
-        <div class="image-box-submit"><label for = "image-URL">Image URL</label>
-        <input type="url" name="url" id="image-URL">
+      <h1 class="form-header">New Entry</h1>
+      <div class="top row">
+        <div class="image-box column-half ">
+          <img src="images\placeholder-image-square.jpg" alt="Default Blank Image">
         </div>
-        <div class="title-field"><label for = "Title">Title</label>
-        <input type="text" name="text" id="Title">
-        </div>
-        <div class="notes-field"><label for = "Notes">Notes</label>
+        <!-- <form action=""> -->
+          <div class="next-to-image column half">
+            <div class="image-box-submit column-half"><label for="image-URL">Image URL</label>
+              <input type="url" name="url" id="image-URL">
+            </div>
+            <div class="title-field column-half"><label for="Title">Title</label>
+              <input type="text" name="text" id="Title">
+            </div>
+          </div>
+      </div>
+      <div class="notes-field column-full"><label for="Notes">Notes</label>
         <textarea name="Notes" id="Notes" cols="40" rows="15"></textarea>
-        </div>
-        <div><label for="Save"></label>
+      </div>
+      <div class="submit-button"><label for="Save"></label>
         <input type="submit" name="Save" value="Save" id="Save">
-        </div>
+      </div>
       </form>
     </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>
+.
