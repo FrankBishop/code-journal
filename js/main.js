@@ -8,6 +8,10 @@ var imageChange = document.querySelector('.image-to-change');
 imageField.addEventListener('input', changeImage);
 // var entryID = 0
 var nextEntryId = 1;
+// var dataModel = {
+//   entries
+//   nextEntryId: 0
+// };
 var formField = document.querySelector('form');
 formField.addEventListener('submit', submitAction);
 function changeImage(event) {
@@ -20,6 +24,9 @@ function submitAction(event) {
     title: titleField.value,
     notes: notesField.value
   };
-  inputs.nextEntryId = nextEntryId;
+  inputs.nextEntryId = data.nextEntryId;
+  data.nextEntryId = nextEntryId++;
+
   // console.log(inputs)
+  // console.log(data)
 }
