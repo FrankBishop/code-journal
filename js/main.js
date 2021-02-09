@@ -26,6 +26,7 @@ function submitAction(event) {
   };
   inputs.nextEntryId = data.nextEntryId;
   data.nextEntryId = nextEntryId++;
+  data.entries.push(inputs);
 
   // console.log(inputs)
   // console.log(data)
