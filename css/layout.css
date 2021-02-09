@@ -31,4 +31,17 @@
   .column-half {
     width: 50%;
   }
+
+  header > h1 {
+    margin-left: 28%;
+  }
+
+  .form-header {
+    margin-left: 3%;
+  }
+
+  .image-box-submit,
+  .title-field {
+    width: 100%;
+  }
 }
