@@ -29,7 +29,8 @@ function submitAction(event) {
   data.entries.push(inputs);
   imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
   formField.reset();
-
+  var storedData = JSON.stringify(data);
+  localStorage.setItem('Coding Notes Entries', storedData);
   // console.log(inputs)
   // console.log(data)
 }
