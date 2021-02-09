@@ -20,17 +20,20 @@ img {
 }
 
 .submit-button {
-  margin-left: 85%;
+  text-align: right;
   margin-bottom: 5%;
-  box-shadow: 1px 1px 1px black;
 }
 
 input {
   border-color: black;
 }
 
+.submit-button > input {
+  width: 10%;
+}
+
 .image-box-submit > input,
 .title-field > input {
   height: 35px;
-  width: 245%;
+  width: 400px;
 }

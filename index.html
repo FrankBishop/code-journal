@@ -18,31 +18,33 @@
 
 <body>
   <header>
-    <h1>Code Journal</h1>
+    <div class="container">
+      <h1>Code Journal</h1>
+    </div>
   </header>
   <main>
     <div class="container" data-view="entry-form">
       <form action="">
-      <h1 class="form-header">New Entry</h1>
-      <div class="row">
-        <div class="column-half ">
-          <img class= "image-to-change" src="images\placeholder-image-square.jpg" alt="Default Blank Image">
-        </div>
+        <h1 class="form-header">New Entry</h1>
+        <div class="row">
+          <div class="column-half ">
+            <img class="image-to-change" src="images\placeholder-image-square.jpg" alt="Default Blank Image">
+          </div>
           <div class="column half">
             <div class="image-box-submit column-half"><label for="image-URL">Image URL</label>
               <input type="url" name="url" id="image-URL" required="required">
             </div>
-            <div class="title-field column-half"><label for="Title">Title</label>
-              <input type="text" name="text" id="Title" required="required">
+            <div class="title-field column-half"><label for="title">Title</label>
+              <input type="text" name="text" id="title" required="required">
             </div>
           </div>
-      </div>
-      <div class="column-full"><label for="Notes">Notes</label>
-        <textarea name="Notes" id="Notes" cols="40" rows="15" required></textarea>
-      </div>
-      <div class="submit-button"><label for="Save"></label>
-        <input type="submit" name="Save" value="Save" id="Save" required= "required">
-      </div>
+        </div>
+        <div class="column-full"><label for="notes">Notes</label>
+          <textarea name="Notes" id="notes" cols="40" rows="15" required></textarea>
+        </div>
+        <div class="submit-button"><label for="save"></label>
+          <input type="submit" name="save" value="Save" id="Save" required="required">
+        </div>
       </form>
     </div>
   </main>

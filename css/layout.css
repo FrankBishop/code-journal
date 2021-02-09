@@ -44,9 +44,4 @@
   .title-field {
     width: 100%;
   }
-
-  .image-box-submit > input,
-  .title-field > input {
-    height: 35px;
-  }
 }
