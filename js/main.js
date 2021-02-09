@@ -6,12 +6,8 @@ var titleField = document.getElementById('Title');
 var notesField = document.getElementById('Notes');
 var imageChange = document.querySelector('.image-to-change');
 imageField.addEventListener('input', changeImage);
-// var entryID = 0
+var entryID = 0;
 var nextEntryId = 1;
-// var dataModel = {
-//   entries
-//   nextEntryId: 0
-// };
 var formField = document.querySelector('form');
 formField.addEventListener('submit', submitAction);
 function changeImage(event) {
@@ -24,8 +20,9 @@ function submitAction(event) {
     title: titleField.value,
     notes: notesField.value
   };
-  inputs.nextEntryId = data.nextEntryId;
-  data.nextEntryId = nextEntryId++;
+  inputs.entryId = entryID++;
+  inputs.nextEntryId = nextEntryId++;
+  data.nextEntryId = data.nextEntryId++;
   data.entries.push(inputs);
   imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
   formField.reset();
