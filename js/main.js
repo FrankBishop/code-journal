@@ -27,7 +27,8 @@ function submitAction(event) {
   inputs.nextEntryId = data.nextEntryId;
   data.nextEntryId = nextEntryId++;
   data.entries.push(inputs);
-  imageChange.removeAttribute('src');
+  imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
+  formField.reset();
 
   // console.log(inputs)
   // console.log(data)
