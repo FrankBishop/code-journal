@@ -1,9 +1,9 @@
 /* global data */
 /* exported data */
 
-var imageField = document.getElementById('image-URL');
-var titleField = document.getElementById('Title');
-var notesField = document.getElementById('Notes');
+var imageField = document.querySelector('#image-URL');
+var titleField = document.querySelector('#Title');
+var notesField = document.querySelector('#Notes');
 var imageChange = document.querySelector('.image-to-change');
 imageField.addEventListener('input', changeImage);
 var entryID = 0;
@@ -28,6 +28,4 @@ function submitAction(event) {
   formField.reset();
   var storedData = JSON.stringify(data);
   localStorage.setItem('Coding Notes Entries', storedData);
-  // console.log(inputs)
-  // console.log(data)
 }
