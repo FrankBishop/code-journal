@@ -62,7 +62,7 @@ function addJournal(entry) {
   entryMain.appendChild(entryText);
   entryText.textContent = entry.notes;
   listElement.setAttribute('data-entry-id', entry.entryId);
-  // list.addEventListener('click', testFunction);
+  list.addEventListener('click', edit);
   return listElement;
 }
 
@@ -85,6 +85,10 @@ function addNewEntry(event) {
 }
 // var entryParents = document.querySelectorAll('li')
 
-// function testFunction(event){
-//   console.log('this added an event listener');
-// }
+function edit(event) {
+  // console.log('this is a test')
+  var clickTarget = event.target.matches('.fas');
+  if (clickTarget) {
+    addNewEntry();
+  }
+}
