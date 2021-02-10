@@ -23,4 +23,6 @@ function submitAction(event) {
   data.entries.unshift(inputs);
   imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
   formField.reset();
+  location.reload();
+  window.location.href = '#entries';
 }
