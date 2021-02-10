@@ -24,7 +24,8 @@ function submitAction(event) {
   inputs.entryId = data.nextEntryId;
   data.nextEntryId++;
   data.entries.unshift(inputs);
-  addJournal(data.entries[0]);
+  var $newEntry = addJournal(data.entries[0]);
+  list.prepend($newEntry);
   imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
   formField.reset();
   window.location.href = '#entries';
@@ -38,16 +39,17 @@ function addJournal(entry) {
   var entryImage = document.createElement('img');
   entryRow.appendChild(entryImage);
   entryImage.className = 'column-half';
-  entryImage.setAttribute('src', data.entries[i].image);
+  entryImage.setAttribute('src', entry.image);
   var entryMain = document.createElement('div');
   entryRow.appendChild(entryMain);
   entryMain.className = 'column-half';
   var entryHeader = document.createElement('h1');
   entryMain.appendChild(entryHeader);
-  entryHeader.textContent = data.entries[i].title;
+  entryHeader.textContent = entry.title;
   var entryText = document.createElement('p');
   entryMain.appendChild(entryText);
-  entryText.textContent = data.entries[i].notes;
+  entryText.textContent = entry.notes;
+  return listElement;
 }
 
 function addPastJournals(event) {
