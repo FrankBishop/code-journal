@@ -11,6 +11,7 @@ var entiresLink = document.querySelector('.entries-link');
 var entries = document.querySelector('#entries');
 var newButton = document.querySelector('.new-button');
 var list = document.querySelector('ul');
+// var listElement = document.createElement('li');
 var i = 0;
 window.addEventListener('DOMContentLoaded', addPastJournals);
 imageField.addEventListener('input', changeImage);
@@ -58,6 +59,7 @@ function addJournal(entry) {
   var entryText = document.createElement('p');
   entryMain.appendChild(entryText);
   entryText.textContent = entry.notes;
+  listElement.setAttribute('data-entry-id', entry.entryId);
   return listElement;
 }
 
