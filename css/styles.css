@@ -33,7 +33,8 @@ img {
   margin-bottom: 5%;
 }
 
-input {
+input,
+button {
   border-color: black;
 }
 
@@ -51,4 +52,12 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.new-button {
+  margin-top: 20px;
 }
