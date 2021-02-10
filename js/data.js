@@ -7,25 +7,22 @@ var data = {
   nextEntryId: 1
 };
 
-// var entries = document.querySelector('.entries');
 var list = document.querySelector('ul');
+var i = 0;
 
-window.addEventListener('load', storedDataLoad);
+window.addEventListener('DOMContentLoaded', addPastJournals);
 
 window.addEventListener('beforeunload', localStorageSet);
+
+var previousData = localStorage.getItem('code-journal-data');
+if (previousData !== null) {
+  data = JSON.parse(previousData);
+}
 
 function localStorageSet(event) {
   var storedData = JSON.stringify(data);
   localStorage.setItem('code-journal-data', storedData);
 }
-
-function storedDataLoad(event) {
-  var previousData = localStorage.getItem('code-journal-data');
-  if (previousData !== null) {
-    data = JSON.parse(previousData);
-  }
-}
-addJournal();
 
 function addJournal(entry) {
   var listElement = document.createElement('li');
@@ -36,14 +33,20 @@ function addJournal(entry) {
   var entryImage = document.createElement('img');
   entryRow.appendChild(entryImage);
   entryImage.className = 'column-half';
-  entryImage.setAttribute('src', data.entries[0].image);
+  entryImage.setAttribute('src', data.entries[i].image);
   var entryMain = document.createElement('div');
   entryRow.appendChild(entryMain);
   entryMain.className = 'column-half';
   var entryHeader = document.createElement('h1');
   entryMain.appendChild(entryHeader);
-  entryHeader.textContent = data.entries[0].title;
+  entryHeader.textContent = data.entries[i].title;
   var entryText = document.createElement('p');
   entryMain.appendChild(entryText);
-  entryText.textContent = data.entries[0].notes;
+  entryText.textContent = data.entries[i].notes;
+}
+
+function addPastJournals(event) {
+  for (i = 0; i < data.entries.length - 1; i++) {
+    addJournal(data.entries[i]);
+  }
 }
