@@ -11,6 +11,18 @@ header {
   background-color: black;
   color: white;
   padding: 10px 20px;
+
+  /* display: flex;
+  justify-content: space-around; */
+}
+
+.page-top {
+  display: inline;
+}
+
+.nav-bar {
+  margin-left: 20px;
+  display: inline;
 }
 
 input,
