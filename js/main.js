@@ -24,9 +24,9 @@ function submitAction(event) {
   inputs.entryId = data.nextEntryId;
   data.nextEntryId++;
   data.entries.unshift(inputs);
+  addJournal(data.entries[0]);
   imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
   formField.reset();
-  addJournal();
   window.location.href = '#entries';
 }
 function addJournal(entry) {
