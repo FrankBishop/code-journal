@@ -52,6 +52,9 @@ function addJournal(entry) {
   var entryHeader = document.createElement('h1');
   entryMain.appendChild(entryHeader);
   entryHeader.textContent = entry.title;
+  var icon = document.createElement('i');
+  entryHeader.appendChild(icon);
+  icon.className = 'fas fa-edit icon';
   var entryText = document.createElement('p');
   entryMain.appendChild(entryText);
   entryText.textContent = entry.notes;

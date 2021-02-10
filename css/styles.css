@@ -58,6 +58,15 @@ ul {
   display: none;
 }
 
+h1 {
+  position: relative;
+}
+
 .new-button {
   margin-top: 20px;
+}
+
+.icon {
+  position: absolute;
+  right: 10px;
 }
