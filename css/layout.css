@@ -30,6 +30,7 @@
 
   .column-half {
     width: 50%;
+    margin-bottom: 50px;
   }
 
   header > h1 {
@@ -43,5 +44,13 @@
   .image-box-submit,
   .title-field {
     width: 100%;
+  }
+
+  .entries > .column-half {
+    width: 40%;
+  }
+
+  .entries > h1 {
+    display: inline;
   }
 }
