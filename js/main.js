@@ -12,6 +12,8 @@ var entries = document.querySelector('#entries');
 var newButton = document.querySelector('.new-button');
 var list = document.querySelector('ul');
 // var listElement = document.createElement('li');
+// var entryParents = document.querySelectorAll('li')
+
 var i = 0;
 window.addEventListener('DOMContentLoaded', addPastJournals);
 imageField.addEventListener('input', changeImage);
@@ -60,6 +62,7 @@ function addJournal(entry) {
   entryMain.appendChild(entryText);
   entryText.textContent = entry.notes;
   listElement.setAttribute('data-entry-id', entry.entryId);
+  // list.addEventListener('click', testFunction);
   return listElement;
 }
 
@@ -80,3 +83,8 @@ function addNewEntry(event) {
   newButton.className = 'hidden';
   formContainer.className = 'container';
 }
+// var entryParents = document.querySelectorAll('li')
+
+// function testFunction(event){
+//   console.log('this added an event listener');
+// }
