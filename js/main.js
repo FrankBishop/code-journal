@@ -48,7 +48,6 @@ function submitAction(event) {
     formField.reset();
     changeToEntries();
   } else {
-    // console.log('you are editing')
     event.preventDefault();
     inputs = {
       image: imageField.value,
@@ -56,24 +55,16 @@ function submitAction(event) {
       notes: notesField.value
     };
     inputs.entryId = data.editing.entryId;
-    data.entries.splice(data.editing.entryId, 0, inputs);
-    // inputs.entryId = data.nextEntryId;
-    // data.nextEntryId++;
-    // data.entries.unshift(inputs);
-    // var $newEntry = addJournal(data.entries[0]);
-    // list.prepend($newEntry);
-    // var entryNodes = document.querySelectorAll('li');
-    // for (i = 0; i < entryNodes.length; i++) {
-    //   var dataEntryId = entryNodes[i].getAttribute('data-entry-id');
-    // console.log(dataEntryId);
-    // if (data.editing.entryId === dataEntryId) {
-    //   console.log(dataEntryId);
-    // var oldEntry = 'li' = data.editing.entryId;
-    // var $newEntry = addJournal(data.editing);
-    // oldEntry.replaceChild(oldEntry, $newEntry);
+    data.editing.image = inputs.image;
+    data.editing.title = inputs.title;
+    data.editing.notes = inputs.notes;
+    var oldEntry = document.querySelector('[data-entry-id="' + data.editing.entryId + '"]');
+    var editedEntry = addJournal(data.editing);
+    list.replaceChild(editedEntry, oldEntry);
     imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
     formField.reset();
     changeToEntries();
+    data.editing = null;
   }
 }
 function addJournal(entry) {
