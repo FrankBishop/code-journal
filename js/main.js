@@ -11,6 +11,7 @@ var entiresLink = document.querySelector('.entries-link');
 var entries = document.querySelector('#entries');
 var newButton = document.querySelector('.new-button');
 var list = document.querySelector('ul');
+var formHeader = document.querySelector('.form-header');
 // var listElement = document.createElement('li');
 // var entryParents = document.querySelectorAll('li')
 
@@ -83,15 +84,29 @@ function addNewEntry(event) {
   newButton.className = 'hidden';
   formContainer.className = 'container';
 }
-// var entryParents = document.querySelectorAll('li')
 
 function edit(event) {
   var target = event.target;
   var clickTarget = event.target.matches('.fas');
   var parentEntry = target.closest('li');
+  var j = 0;
   if (clickTarget) {
     addNewEntry();
-    var attribute = parentEntry.getAttribute('data-entry-id');
-    data.editing = attribute;
+    var number = parentEntry.getAttribute('data-entry-id');
+    number = JSON.parse(number);
+    for (j = 0; j < data.entries.length; j++) {
+      if (number === data.entries[j].entryId) {
+        data.editing = data.entries[j];
+        editEntry(data.editing);
+      }
+    }
   }
+}
+
+function editEntry(entry) {
+  imageField.value = entry.image;
+  titleField.value = entry.title;
+  notesField.value = entry.notes;
+  imageChange.setAttribute('src', entry.image);
+  formHeader.textContent = 'Edit Entry';
 }
