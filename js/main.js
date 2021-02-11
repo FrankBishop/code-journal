@@ -103,6 +103,7 @@ function addNewEntry(event) {
   entries.className = 'hidden';
   newButton.className = 'hidden';
   formContainer.className = 'container';
+  formHeader.textContent = 'New Entry';
 }
 
 function edit(event) {
