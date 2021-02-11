@@ -86,9 +86,12 @@ function addNewEntry(event) {
 // var entryParents = document.querySelectorAll('li')
 
 function edit(event) {
-  // console.log('this is a test')
+  var target = event.target;
   var clickTarget = event.target.matches('.fas');
+  var parentEntry = target.closest('li');
   if (clickTarget) {
     addNewEntry();
+    var attribute = parentEntry.getAttribute('data-entry-id');
+    data.editing = attribute;
   }
 }
