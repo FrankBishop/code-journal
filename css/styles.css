@@ -22,6 +22,10 @@ header {
   display: inline;
 }
 
+.form-container {
+  position: relative;
+}
+
 input,
 textarea,
 img {
@@ -31,6 +35,8 @@ img {
 .submit-button {
   text-align: right;
   margin-bottom: 5%;
+
+  /* display: inline; */
 }
 
 input,
@@ -38,8 +44,25 @@ button {
   border-color: black;
 }
 
+.delete-button {
+  position: absolute;
+  bottom: 30px;
+}
+
+.delete-button > button {
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+/* .submit-button > label, .delete-button > label {
+  display: inline;
+  width: 50%;
+} */
+
 .submit-button > input {
   width: 10%;
+  margin: auto;
 }
 
 .image-box-submit > input,

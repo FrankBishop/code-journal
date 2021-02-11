@@ -12,6 +12,7 @@ var entries = document.querySelector('#entries');
 var newButton = document.querySelector('.new-button');
 var list = document.querySelector('ul');
 var formHeader = document.querySelector('.form-header');
+var deletePlaceholder = document.querySelector('.deletePlaceholder');
 
 var i = 0;
 window.addEventListener('DOMContentLoaded', addPastJournals);
@@ -104,6 +105,7 @@ function addNewEntry(event) {
   newButton.className = 'hidden';
   formContainer.className = 'container';
   formHeader.textContent = 'New Entry';
+  deletePlaceholder.className = 'hidden';
 }
 
 function edit(event) {
@@ -130,4 +132,5 @@ function editEntry(entry) {
   notesField.value = entry.notes;
   imageChange.setAttribute('src', entry.image);
   formHeader.textContent = 'Edit Entry';
+  deletePlaceholder.className = 'delete-button';
 }
