@@ -12,6 +12,7 @@ var entries = document.querySelector('#entries');
 var newButton = document.querySelector('.new-button');
 var list = document.querySelector('ul');
 var formHeader = document.querySelector('.form-header');
+// var entryNodes = document.querySelectorAll('li');
 // var listElement = document.createElement('li');
 // var entryParents = document.querySelectorAll('li')
 
@@ -24,21 +25,56 @@ newButton.addEventListener('click', addNewEntry);
 function changeImage(event) {
   imageChange.setAttribute('src', imageField.value);
 }
+
+// maybe have to get parent element and append it to that instead of to list
+// also need to clear data.editing
+// node.replaceChild()
+// maybe need to use closest again
+
 function submitAction(event) {
-  event.preventDefault();
-  var inputs = {
-    image: imageField.value,
-    title: titleField.value,
-    notes: notesField.value
-  };
-  inputs.entryId = data.nextEntryId;
-  data.nextEntryId++;
-  data.entries.unshift(inputs);
-  var $newEntry = addJournal(data.entries[0]);
-  list.prepend($newEntry);
-  imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
-  formField.reset();
-  changeToEntries();
+  if (data.editing === null) {
+    event.preventDefault();
+    var inputs = {
+      image: imageField.value,
+      title: titleField.value,
+      notes: notesField.value
+    };
+    inputs.entryId = data.nextEntryId;
+    data.nextEntryId++;
+    data.entries.unshift(inputs);
+    var $newEntry = addJournal(data.entries[0]);
+    list.prepend($newEntry);
+    imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
+    formField.reset();
+    changeToEntries();
+  } else {
+    // console.log('you are editing')
+    event.preventDefault();
+    inputs = {
+      image: imageField.value,
+      title: titleField.value,
+      notes: notesField.value
+    };
+    inputs.entryId = data.editing.entryId;
+    data.entries.splice(data.editing.entryId, 0, inputs);
+    // inputs.entryId = data.nextEntryId;
+    // data.nextEntryId++;
+    // data.entries.unshift(inputs);
+    // var $newEntry = addJournal(data.entries[0]);
+    // list.prepend($newEntry);
+    // var entryNodes = document.querySelectorAll('li');
+    // for (i = 0; i < entryNodes.length; i++) {
+    //   var dataEntryId = entryNodes[i].getAttribute('data-entry-id');
+    // console.log(dataEntryId);
+    // if (data.editing.entryId === dataEntryId) {
+    //   console.log(dataEntryId);
+    // var oldEntry = 'li' = data.editing.entryId;
+    // var $newEntry = addJournal(data.editing);
+    // oldEntry.replaceChild(oldEntry, $newEntry);
+    imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
+    formField.reset();
+    changeToEntries();
+  }
 }
 function addJournal(entry) {
   var listElement = document.createElement('li');
@@ -68,6 +104,7 @@ function addJournal(entry) {
 }
 
 function addPastJournals(event) {
+  data.editing = null;
   for (i = 0; i < data.entries.length - 1; i++) {
     addJournal(data.entries[i]);
   }
