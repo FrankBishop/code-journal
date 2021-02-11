@@ -12,9 +12,6 @@ var entries = document.querySelector('#entries');
 var newButton = document.querySelector('.new-button');
 var list = document.querySelector('ul');
 var formHeader = document.querySelector('.form-header');
-// var entryNodes = document.querySelectorAll('li');
-// var listElement = document.createElement('li');
-// var entryParents = document.querySelectorAll('li')
 
 var i = 0;
 window.addEventListener('DOMContentLoaded', addPastJournals);
@@ -25,11 +22,6 @@ newButton.addEventListener('click', addNewEntry);
 function changeImage(event) {
   imageChange.setAttribute('src', imageField.value);
 }
-
-// maybe have to get parent element and append it to that instead of to list
-// also need to clear data.editing
-// node.replaceChild()
-// maybe need to use closest again
 
 function submitAction(event) {
   if (data.editing === null) {
