@@ -11,6 +11,8 @@ var entiresLink = document.querySelector('.entries-link');
 var entries = document.querySelector('#entries');
 var newButton = document.querySelector('.new-button');
 var list = document.querySelector('ul');
+var formHeader = document.querySelector('.form-header');
+
 var i = 0;
 window.addEventListener('DOMContentLoaded', addPastJournals);
 imageField.addEventListener('input', changeImage);
@@ -20,21 +22,42 @@ newButton.addEventListener('click', addNewEntry);
 function changeImage(event) {
   imageChange.setAttribute('src', imageField.value);
 }
+
 function submitAction(event) {
-  event.preventDefault();
-  var inputs = {
-    image: imageField.value,
-    title: titleField.value,
-    notes: notesField.value
-  };
-  inputs.entryId = data.nextEntryId;
-  data.nextEntryId++;
-  data.entries.unshift(inputs);
-  var $newEntry = addJournal(data.entries[0]);
-  list.prepend($newEntry);
-  imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
-  formField.reset();
-  changeToEntries();
+  if (data.editing === null) {
+    event.preventDefault();
+    var inputs = {
+      image: imageField.value,
+      title: titleField.value,
+      notes: notesField.value
+    };
+    inputs.entryId = data.nextEntryId;
+    data.nextEntryId++;
+    data.entries.unshift(inputs);
+    var $newEntry = addJournal(data.entries[0]);
+    list.prepend($newEntry);
+    imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
+    formField.reset();
+    changeToEntries();
+  } else {
+    event.preventDefault();
+    inputs = {
+      image: imageField.value,
+      title: titleField.value,
+      notes: notesField.value
+    };
+    inputs.entryId = data.editing.entryId;
+    data.editing.image = inputs.image;
+    data.editing.title = inputs.title;
+    data.editing.notes = inputs.notes;
+    var oldEntry = document.querySelector('[data-entry-id="' + data.editing.entryId + '"]');
+    var editedEntry = addJournal(data.editing);
+    list.replaceChild(editedEntry, oldEntry);
+    imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
+    formField.reset();
+    changeToEntries();
+    data.editing = null;
+  }
 }
 function addJournal(entry) {
   var listElement = document.createElement('li');
@@ -52,13 +75,19 @@ function addJournal(entry) {
   var entryHeader = document.createElement('h1');
   entryMain.appendChild(entryHeader);
   entryHeader.textContent = entry.title;
+  var icon = document.createElement('i');
+  entryHeader.appendChild(icon);
+  icon.className = 'fas fa-edit icon';
   var entryText = document.createElement('p');
   entryMain.appendChild(entryText);
   entryText.textContent = entry.notes;
+  listElement.setAttribute('data-entry-id', entry.entryId);
+  list.addEventListener('click', edit);
   return listElement;
 }
 
 function addPastJournals(event) {
+  data.editing = null;
   for (i = 0; i < data.entries.length - 1; i++) {
     addJournal(data.entries[i]);
   }
@@ -74,4 +103,31 @@ function addNewEntry(event) {
   entries.className = 'hidden';
   newButton.className = 'hidden';
   formContainer.className = 'container';
+  formHeader.textContent = 'New Entry';
+}
+
+function edit(event) {
+  var target = event.target;
+  var clickTarget = event.target.matches('.fas');
+  var parentEntry = target.closest('li');
+  var j = 0;
+  if (clickTarget) {
+    addNewEntry();
+    var number = parentEntry.getAttribute('data-entry-id');
+    number = JSON.parse(number);
+    for (j = 0; j < data.entries.length; j++) {
+      if (number === data.entries[j].entryId) {
+        data.editing = data.entries[j];
+        editEntry(data.editing);
+      }
+    }
+  }
+}
+
+function editEntry(entry) {
+  imageField.value = entry.image;
+  titleField.value = entry.title;
+  notesField.value = entry.notes;
+  imageChange.setAttribute('src', entry.image);
+  formHeader.textContent = 'Edit Entry';
 }
