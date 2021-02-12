@@ -103,7 +103,6 @@ function addPastJournals(event) {
 }
 
 function changeToEntries(event) {
-  // console.log('is this running too?')
   formContainer.className = 'hidden';
   entries.className = 'container entries';
   newButton.className = 'new-button';
@@ -142,30 +141,28 @@ function editEntry(entry) {
   imageChange.setAttribute('src', entry.image);
   formHeader.textContent = 'Edit Entry';
   deletePlaceholder.className = 'delete-button';
+  formContainer.className = 'form-container container';
+  entries.className = 'hidden';
+  deleteButton.className = 'delete-button';
 }
 
 function deleteEntryModal(event) {
-  // console.log('this is deleting');
-  // event.preventDefault()
   formContainer.className = 'form-container container';
   entries.className = 'hidden';
   deleteModal.className = 'modal';
+  deleteButton.className = 'delete-button';
 }
 
 function closeModal(event) {
   deleteModal.className = 'hidden';
-
 }
 
 function deleteEntry(event) {
-  // event.preventDefault();
-  // console.log('the delete button works');
-
   var deleteEntry = document.querySelector('[data-entry-id="' + data.editing.entryId + '"]');
-  // console.log(deleteEntry);
   deleteEntry.remove();
   imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
   deleteModal.className = 'hidden';
+  deleteButton.className = 'delete-button';
   formField.reset();
   changeToEntries();
 }

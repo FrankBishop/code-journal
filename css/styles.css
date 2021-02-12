@@ -35,8 +35,6 @@ img {
 .submit-button {
   text-align: right;
   margin-bottom: 5%;
-
-  /* display: inline; */
 }
 
 input,
@@ -46,7 +44,7 @@ button {
 
 .delete-button {
   position: absolute;
-  bottom: 30px;
+  bottom: 1px;
 }
 
 .delete-button > button {
