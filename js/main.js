@@ -16,7 +16,7 @@ var deletePlaceholder = document.querySelector('.deletePlaceholder');
 var deleteModal = document.querySelector('.delete-modal');
 var deleteButton = document.querySelector('.delete-button-button');
 var cancelButton = document.querySelector('.cancel-button');
-// var deleteConfirmButton = document.querySelector('.delete-confirm-button');
+var deleteConfirmButton = document.querySelector('.delete-confirm-button');
 
 var i = 0;
 window.addEventListener('DOMContentLoaded', addPastJournals);
@@ -26,6 +26,8 @@ entriesLink.addEventListener('click', changeToEntries);
 newButton.addEventListener('click', addNewEntry);
 deleteButton.addEventListener('click', deleteEntryModal);
 cancelButton.addEventListener('click', closeModal);
+deleteConfirmButton.addEventListener('click', deleteEntry);
+
 function changeImage(event) {
   imageChange.setAttribute('src', imageField.value);
 }
@@ -144,11 +146,26 @@ function editEntry(entry) {
 
 function deleteEntryModal(event) {
   // console.log('this is deleting');
-  formContainer.className = 'form-container';
+  // event.preventDefault()
+  formContainer.className = 'form-container container';
   entries.className = 'hidden';
   deleteModal.className = 'modal';
 }
 
 function closeModal(event) {
   deleteModal.className = 'hidden';
+
+}
+
+function deleteEntry(event) {
+  // event.preventDefault();
+  // console.log('the delete button works');
+
+  var deleteEntry = document.querySelector('[data-entry-id="' + data.editing.entryId + '"]');
+  // console.log(deleteEntry);
+  deleteEntry.remove();
+  imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
+  deleteModal.className = 'hidden';
+  formField.reset();
+  changeToEntries();
 }
