@@ -55,11 +55,6 @@ button {
   border-bottom: 1px solid black;
 }
 
-/* .submit-button > label, .delete-button > label {
-  display: inline;
-  width: 50%;
-} */
-
 .submit-button > input {
   width: 10%;
   margin: auto;
@@ -93,4 +88,31 @@ h1 {
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.modal {
+  position: fixed;
+  top: 250px;
+  left: 20px;
+  z-index: 1;
+  padding: 50px 10px;
+  border-radius: 6px;
+  font-family: sans-serif;
+  text-align: center;
+  background-color: white;
+}
+
+.modal > .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.modal-buttons > button {
+  font-size: 26px;
+  width: 33%;
+}
+
+.modal-buttons > button:nth-child(2) {
+  background-color: red;
 }

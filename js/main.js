@@ -7,19 +7,25 @@ var notesField = document.querySelector('#notes');
 var imageChange = document.querySelector('.image-to-change');
 var formContainer = document.querySelector('.form-container');
 var formField = document.querySelector('form');
-var entiresLink = document.querySelector('.entries-link');
+var entriesLink = document.querySelector('.entries-link');
 var entries = document.querySelector('#entries');
 var newButton = document.querySelector('.new-button');
 var list = document.querySelector('ul');
 var formHeader = document.querySelector('.form-header');
 var deletePlaceholder = document.querySelector('.deletePlaceholder');
+var deleteModal = document.querySelector('.delete-modal');
+var deleteButton = document.querySelector('.delete-button-button');
+var cancelButton = document.querySelector('.cancel-button');
+// var deleteConfirmButton = document.querySelector('.delete-confirm-button');
 
 var i = 0;
 window.addEventListener('DOMContentLoaded', addPastJournals);
 imageField.addEventListener('input', changeImage);
 formField.addEventListener('submit', submitAction);
-entiresLink.addEventListener('click', changeToEntries);
+entriesLink.addEventListener('click', changeToEntries);
 newButton.addEventListener('click', addNewEntry);
+deleteButton.addEventListener('click', deleteEntryModal);
+cancelButton.addEventListener('click', closeModal);
 function changeImage(event) {
   imageChange.setAttribute('src', imageField.value);
 }
@@ -95,6 +101,7 @@ function addPastJournals(event) {
 }
 
 function changeToEntries(event) {
+  // console.log('is this running too?')
   formContainer.className = 'hidden';
   entries.className = 'container entries';
   newButton.className = 'new-button';
@@ -133,4 +140,15 @@ function editEntry(entry) {
   imageChange.setAttribute('src', entry.image);
   formHeader.textContent = 'Edit Entry';
   deletePlaceholder.className = 'delete-button';
+}
+
+function deleteEntryModal(event) {
+  // console.log('this is deleting');
+  formContainer.className = 'form-container';
+  entries.className = 'hidden';
+  deleteModal.className = 'modal';
+}
+
+function closeModal(event) {
+  deleteModal.className = 'hidden';
 }
