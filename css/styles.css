@@ -26,6 +26,15 @@ header {
   position: relative;
 }
 
+.main-modal-open {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 input,
 textarea,
 img {
@@ -90,7 +99,7 @@ h1 {
 
 .modal {
   position: fixed;
-  top: 250px;
+  top: 200px;
   left: 20px;
   z-index: 1;
   padding: 50px 10px;

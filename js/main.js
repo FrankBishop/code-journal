@@ -17,6 +17,7 @@ var deleteModal = document.querySelector('.delete-modal');
 var deleteButton = document.querySelector('.delete-button-button');
 var cancelButton = document.querySelector('.cancel-button');
 var deleteConfirmButton = document.querySelector('.delete-confirm-button');
+var $body = document.querySelector('body');
 
 var i = 0;
 window.addEventListener('DOMContentLoaded', addPastJournals);
@@ -151,18 +152,24 @@ function deleteEntryModal(event) {
   entries.className = 'hidden';
   deleteModal.className = 'modal';
   deleteButton.className = 'delete-button';
+  $body.className = 'main-modal-open';
 }
 
 function closeModal(event) {
   deleteModal.className = 'hidden';
+  $body.className = 'body';
 }
 
 function deleteEntry(event) {
   var deleteEntry = document.querySelector('[data-entry-id="' + data.editing.entryId + '"]');
   deleteEntry.remove();
+  // localStorage.removeItem(deleteEntry);
   imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
   deleteModal.className = 'hidden';
   deleteButton.className = 'delete-button';
+  $body.className = 'body';
   formField.reset();
   changeToEntries();
 }
+
+// fix modal and localstorage

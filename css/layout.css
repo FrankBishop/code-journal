@@ -56,7 +56,7 @@
 
   main > .modal {
     position: fixed;
-    top: 250px;
+    top: 200px;
     left: 700px;
     z-index: 1;
     padding: 50px 10px;
