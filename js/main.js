@@ -163,7 +163,8 @@ function closeModal(event) {
 function deleteEntry(event) {
   var deleteEntry = document.querySelector('[data-entry-id="' + data.editing.entryId + '"]');
   deleteEntry.remove();
-  // localStorage.removeItem(deleteEntry);
+  var entryToRemove = -Math.abs(data.editing.entryId);
+  data.entries.splice(entryToRemove, 1);
   imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
   deleteModal.className = 'hidden';
   deleteButton.className = 'delete-button';
@@ -171,5 +172,3 @@ function deleteEntry(event) {
   formField.reset();
   changeToEntries();
 }
-
-// fix modal and localstorage
