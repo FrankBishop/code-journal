@@ -22,6 +22,19 @@ header {
   display: inline;
 }
 
+.form-container {
+  position: relative;
+}
+
+.main-modal-open {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 input,
 textarea,
 img {
@@ -38,8 +51,20 @@ button {
   border-color: black;
 }
 
+.delete-button {
+  position: absolute;
+  bottom: 1px;
+}
+
+.delete-button > button {
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
 .submit-button > input {
   width: 10%;
+  margin: auto;
 }
 
 .image-box-submit > input,
@@ -70,4 +95,31 @@ h1 {
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.modal {
+  position: fixed;
+  top: 200px;
+  left: 20px;
+  z-index: 1;
+  padding: 50px 10px;
+  border-radius: 6px;
+  font-family: sans-serif;
+  text-align: center;
+  background-color: white;
+}
+
+.modal > .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.modal-buttons > button {
+  font-size: 26px;
+  width: 33%;
+}
+
+.modal-buttons > button:nth-child(2) {
+  background-color: red;
 }

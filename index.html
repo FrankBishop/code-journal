@@ -21,12 +21,12 @@
     <div class="container">
       <h1 class="page-top">Code Journal</h1>
       <nav class="nav-bar">
-        <a href="#entries" class= "entries-link" data-view="entries">Entries</a>
+        <a href="#entries" class="entries-link" data-view="entries">Entries</a>
       </nav>
     </div>
   </header>
   <main>
-    <div class="container form-container"  data-view="entry-form">
+    <div class="container form-container" data-view="entry-form">
       <form action="">
         <h1 class="form-header">New Entry</h1>
         <div class="row">
@@ -48,11 +48,21 @@
         <div class="submit-button"><label for="save"></label>
           <input type="submit" name="save" value="Save" id="save" required="required">
         </div>
+        <div class="hidden deletePlaceholder"><label for="delete"></label>
+          <button type="button" class="delete-button-button">Delete Entry</button>
+        </div>
       </form>
+    </div>
+    <div class="hidden delete-modal">
+      <h2>Are you sure you want to delete this entry?</h2>
+      <div class="modal-buttons">
+        <button type="button" class="cancel-button">Cancel</button>
+        <button type="button" class="delete-confirm-button">Delete</button>
+      </div>
     </div>
     <div class="hidden" id="entries" data-view="entries">
       <div class="container submit-button">
-        <button class="new-button">New</button>
+        <button type="button" class="new-button">New</button>
       </div>
       <ul>
       </ul>

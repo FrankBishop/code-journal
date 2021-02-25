@@ -53,4 +53,16 @@
   .entries > h1 {
     display: inline;
   }
+
+  main > .modal {
+    position: fixed;
+    top: 200px;
+    left: 700px;
+    z-index: 1;
+    padding: 50px 10px;
+    border-radius: 6px;
+    font-family: sans-serif;
+    text-align: center;
+    background-color: white;
+  }
 }

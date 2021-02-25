@@ -7,18 +7,28 @@ var notesField = document.querySelector('#notes');
 var imageChange = document.querySelector('.image-to-change');
 var formContainer = document.querySelector('.form-container');
 var formField = document.querySelector('form');
-var entiresLink = document.querySelector('.entries-link');
+var entriesLink = document.querySelector('.entries-link');
 var entries = document.querySelector('#entries');
 var newButton = document.querySelector('.new-button');
 var list = document.querySelector('ul');
 var formHeader = document.querySelector('.form-header');
+var deletePlaceholder = document.querySelector('.deletePlaceholder');
+var deleteModal = document.querySelector('.delete-modal');
+var deleteButton = document.querySelector('.delete-button-button');
+var cancelButton = document.querySelector('.cancel-button');
+var deleteConfirmButton = document.querySelector('.delete-confirm-button');
+var $body = document.querySelector('body');
 
 var i = 0;
 window.addEventListener('DOMContentLoaded', addPastJournals);
 imageField.addEventListener('input', changeImage);
 formField.addEventListener('submit', submitAction);
-entiresLink.addEventListener('click', changeToEntries);
+entriesLink.addEventListener('click', changeToEntries);
 newButton.addEventListener('click', addNewEntry);
+deleteButton.addEventListener('click', deleteEntryModal);
+cancelButton.addEventListener('click', closeModal);
+deleteConfirmButton.addEventListener('click', deleteEntry);
+
 function changeImage(event) {
   imageChange.setAttribute('src', imageField.value);
 }
@@ -104,6 +114,7 @@ function addNewEntry(event) {
   newButton.className = 'hidden';
   formContainer.className = 'container';
   formHeader.textContent = 'New Entry';
+  deletePlaceholder.className = 'hidden';
 }
 
 function edit(event) {
@@ -130,4 +141,34 @@ function editEntry(entry) {
   notesField.value = entry.notes;
   imageChange.setAttribute('src', entry.image);
   formHeader.textContent = 'Edit Entry';
+  deletePlaceholder.className = 'delete-button';
+  formContainer.className = 'form-container container';
+  entries.className = 'hidden';
+  deleteButton.className = 'delete-button';
+}
+
+function deleteEntryModal(event) {
+  formContainer.className = 'form-container container';
+  entries.className = 'hidden';
+  deleteModal.className = 'modal';
+  deleteButton.className = 'delete-button';
+  $body.className = 'main-modal-open';
+}
+
+function closeModal(event) {
+  deleteModal.className = 'hidden';
+  $body.className = 'body';
+}
+
+function deleteEntry(event) {
+  var deleteEntry = document.querySelector('[data-entry-id="' + data.editing.entryId + '"]');
+  deleteEntry.remove();
+  var entryToRemove = -Math.abs(data.editing.entryId);
+  data.entries.splice(entryToRemove, 1);
+  imageChange.setAttribute('src', 'images/placeholder-image-square.jpg');
+  deleteModal.className = 'hidden';
+  deleteButton.className = 'delete-button';
+  $body.className = 'body';
+  formField.reset();
+  changeToEntries();
 }
